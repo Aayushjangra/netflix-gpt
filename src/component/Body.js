@@ -3,9 +3,10 @@ import Browse from "./Browse"
 import Login from "./Login"
 import { useEffect } from "react";
 import { RouterProvider } from "react-router-dom";
-import { auth, onAuthStateChanged } from "firebase/auth";
+import {  onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser ,removeUser } from "../Utils/userSlice";
+import { auth } from "../Utils/firebase";
 
 
 const Body = () => {

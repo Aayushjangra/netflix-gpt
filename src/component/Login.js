@@ -4,6 +4,9 @@ import {checkValidData} from "../Utils/validate";
 import { createUserWithEmailAndPassword , signInWithEmailAndPassword} from "firebase/auth";
 import { auth } from "../Utils/firebase";
 import { useNavigate } from "react-router-dom";
+import {  updateProfile } from "firebase/auth";
+
+
 
 
 const Login = () => {
@@ -14,6 +17,7 @@ const Login = () => {
 const name = useRef(null);
 const email = useRef(null);
 const passward = useRef(null);
+
 
 const handleButtonClick= () => {
   const message = checkValidData(email.current.value , passward.current.value );
@@ -26,8 +30,16 @@ const handleButtonClick= () => {
   .then((userCredential) => {
      //Signed In 
      const user = userCredential.user;
-     console.log (user);
-     navigate ("/browse")
+     updateProfile(user, {
+      displayName: name.current.value, photoURL: "https://example.com/jane-q-user/profile.jpg"
+    }).then(() => {
+      
+    }).catch((error) => {
+      setErrorMessage(error.Message);
+
+    });
+
+     
 
   })
     .catch ((error) => {
