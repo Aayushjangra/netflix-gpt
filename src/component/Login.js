@@ -3,8 +3,9 @@ import Header from "./Header";
 import {checkValidData} from "../Utils/validate";
 import { createUserWithEmailAndPassword , signInWithEmailAndPassword} from "firebase/auth";
 import { auth } from "../Utils/firebase";
-import { useNavigate } from "react-router-dom";
 import {  updateProfile } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { addUser } from "../Utils/userSlice";
 
 
 
@@ -12,7 +13,8 @@ import {  updateProfile } from "firebase/auth";
 const Login = () => {
     const [isSignInForm, setIsSignInForm] = useState(true);
    const [errorMessage, setErrorMessage] = useState(null);
-   const navigate = useNavigate();
+
+   const dispatch = useDispatch();
 
 const name = useRef(null);
 const email = useRef(null);
@@ -33,6 +35,8 @@ const handleButtonClick= () => {
      updateProfile(user, {
       displayName: name.current.value, photoURL: "https://example.com/jane-q-user/profile.jpg"
     }).then(() => {
+      const {uid, email,displayName }= auth.currentUser;
+        dispatch(addUser({ uid: uid, email: email, displayName: displayName}));
       
     }).catch((error) => {
       setErrorMessage(error.Message);
@@ -55,8 +59,7 @@ const handleButtonClick= () => {
     signInWithEmailAndPassword(auth, email.current.value , passward.current.value)
     .then((userCredential) =>{
       const user = userCredential.user;
-      console.log(user);
-      navigate ("/browse")
+     
     })
     .catch ((error) => {
       const errorCode = error.code;
