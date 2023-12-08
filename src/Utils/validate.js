@@ -8,6 +8,4 @@ export const checkValidData = (email, passward) => {
 
     return null;
 
-
-
 };

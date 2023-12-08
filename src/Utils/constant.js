@@ -8,7 +8,7 @@ export const  API_OPTIONS = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MmFlOGVjOTAzZjg0OWVmYTJmOGU3NDJhNTc5NDBjYyIsInN1YiI6IjY1NjA0NjczN2RmZGE2MDBjNGY3OThjNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lEE_alPaq8Zb6Ofd7xek4mwGOHEBMg4A3brr_QME71c'
+      Authorization: "Bearer " + process.env.REACT_APP_TMDB_KEY,
     }
   };
   
@@ -16,7 +16,7 @@ export const  API_OPTIONS = {
   "https://image.tmdb.org/t/p/w300"
   
   export const BG_URL =
-  "https://assets.nflxext.com/ffe/siteui/vlv3/dace47b4-a5cb-4368-80fe-c26f3e77d540/f5b52435-458f-498f-9d1d-ccd4f1af9913/IN-en-20231023-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+  "https://assets.nflxext.com/ffe/siteui/vlv3/fc164b4b-f085-44ee-bb7f-ec7df8539eff/d23a1608-7d90-4da1-93d6-bae2fe60a69b/IN-en-20230814-popsignuptwoweeks-perspective_alpha_website_large.jpg";
   
  
 export const SUPPORTED_LANGUAGES = [
@@ -25,3 +25,5 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "spanish", name: "Spanish" },
   {identifier: "punjabi", name: "Punjabi"},
 ];
+
+export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;

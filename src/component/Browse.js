@@ -22,24 +22,19 @@ useTopRatedMovies();
 useUpComingrMovies();
 useOnTheAirMovies();
 
-
-  return (
-    <div>
-       <Header/>
-       {ShowGptSearch? (
-       <GptSearch/>
-       ) : (
-
+return (
+  <div>
+    <Header />
+    {ShowGptSearch ? (
+      <GptSearch />
+    ) : (
       <>
-
-      <MainContainer/>
-      <SecondaryContainer/>
-
+        <MainContainer />
+        <SecondaryContainer />
       </>
-       )}
-      
-    </div>
-  );
+    )}
+  </div>
+);
 };
-
 export default Browse;
+
